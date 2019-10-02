@@ -40,49 +40,42 @@ function bersihkan() {
 	var hasil = document.getElementById("hasilHitung");
     hasil.innerHTML = "";
 }
+function modus() {
+  var val1 = document.formnya.nilai1.value;
+  var val2 =document.formnya.nilai2.value;
+  var val3 =document.formnya.nilai3.value;
+    let data = [val1, val2, val3];
+    let hitung = 0, max_hitung = 0, modus = 0;
+    for (let i = 0; i < data.length; i++) {
+        hitung = 0;
+        for (let j = 0; j < data.length; j++) {
+            if(data[i] == data[j]) {
+                hitung++;
+            }
+        }
+        if(hitung > max_hitung) {
+            max_hitung = hitung;
+            modus = data[i];
+        }
+    }
+    if(max_hitung > 1) {
+        return modus;
+    }
+    else {
+        return "Tidak ada modus";
+    }
+    
+}
 function hasil() {
+  var val1 = document.formnya.nilai1.value;
+  var val2 =document.formnya.nilai2.value;
+  var val3 =document.formnya.nilai3.value;
 	var hasil = document.getElementById("hasilHitung");
     hasil.innerHTML = "<table>\
-    <tr>\
-    <td>\
-    Mean\
-    </td>\
-    <td>\
-    :\
-    </td>\
-    <td>\
-    "+ meann() +"\
-    </td>\
-    </tr>\
-    <td>\
-    Median\
-    </td>\
-    <td>\
-    :\
-    </td>\
-    <td>\
-    "+ mediann() +"\
-    </td>\
-    </tr>\
-    <td>\
-    Max\
-    </td>\
-    <td>\
-    :\
-    </td>\
-    <td>\
-    "+ maxi() +"\
-    </td>\
-    </tr>\
-    <td>\
-    Min\
-    </td>\
-    <td>\
-    :\
-    </td>\
-    <td>\
-    "+ mini() +"\
-    </td>\
-    </tr>\
+    <tr><td>Mean</td><td>:</td><td>" + meann(val1,val2,val3) + " </td></tr> \
+    <tr><td>Median</td><td>:</td><td>" + mediann(val1,val2,val3) + "</td></tr> \
+    <tr><td>Modus</td><td>:</td><td>" + modus(val1,val2,val3) + "</td></tr> \
+    <tr><td>Max</td><td>:</td><td>" + maxi(val1,val2,val3) + "</td></tr> \
+    <tr><td>Min</td><td>:</td><td>" + mini(val1,val2,val3) + "</td></tr> \
     </table>"
 }
